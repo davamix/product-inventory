@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+    backend:
+        build: ./Inventory/Inventory.API
+        image: product-inventory:csharp
+        ports:
+            - "5001:443"
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=https://+:443;http://+:80
+            - ASPNETCORE_HTTPS_PORT=5001
+            - ASPNETCORE_Kestrel__Certificates__Default__Password=1234
+            - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/cert-aspnetcore.pfx
+        volumes: 
+            - ./Inventory/Inventory.API/cert-aspnetcore.pfx:/https/cert-aspnetcore.pfx:ro
+
+    web:
+        build: ./Inventory/Inventory.Web
+        depends_on: 
+            - backend
+        image: product-inventory:web
+        ports:
+            - "80:80"

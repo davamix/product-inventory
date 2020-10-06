@@ -3,6 +3,9 @@
 obj/
 bin/
 
+# certificates
+*.pfx
+
 __pycache__/
 .pytest_cache/
 
