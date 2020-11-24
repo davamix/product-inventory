@@ -1,6 +1,6 @@
 # Product inventory
 
-Part of the [Multi-language Challenge](https://github.com/davamix/multi-language-challenge).
+Same application, different languages. Just for fun :)
 
 ## Description
 
